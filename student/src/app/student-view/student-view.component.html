@@ -1,0 +1,12 @@
+
+<div class="container" *ngIf="student">
+    <h2>Student Details</h2>
+    <p><strong>ID:</strong> {{student.id}}</p>
+    <p><strong>Name:</strong> {{student.name}}</p>
+    <p><strong>Email:</strong> {{student.email}}</p>
+    <p><strong>Course:</strong> {{student.course}}</p>
+    <p><strong>Date of Birth:</strong> {{student.dateOfBirth}}</p>
+  
+    <button routerLink="/students">Back to Students</button>
+  </div>
+  

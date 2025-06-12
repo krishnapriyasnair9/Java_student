@@ -1,0 +1,130 @@
+<!-- 
+<div class="container">
+    <h2>{{ isEditMode ? 'Update Student' : 'Create Student' }}</h2>
+  
+    <form [formGroup]="studentForm" (ngSubmit)="submitForm()">
+      <div>
+        <label>Name:</label>
+        <input formControlName="name" required>
+      </div>
+      <div>
+        <label>Email:</label>
+        <input formControlName="email" required>
+      </div>
+      <div>
+        <label>Course:</label>
+        <input formControlName="course" required>
+      </div>
+      <div>
+        <label>Date of Birth:</label>
+        <input type="date" formControlName="dateOfBirth" required>
+      </div>
+  
+      <button type="submit">{{ isEditMode ? 'Update' : 'Create' }}</button>
+      <button type="button" (click)="cancelEdit()" *ngIf="isEditMode">Cancel</button>
+    </form>
+  
+    <hr>
+  
+    <h2>All Students</h2>
+    <table border="1" width="100%">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Course</th>
+          <th>Date Of Birth</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let student of students">
+          <td>{{student.id}}</td>
+          <td>{{student.name}}</td>
+          <td>{{student.email}}</td>
+          <td>{{student.course}}</td>
+          <td>{{student.dateOfBirth}}</td>
+          <td>
+            <button [routerLink]="['/students', student.id]">View</button>
+
+            <button (click)="editStudent(student)">Edit</button>
+            <button (click)="deleteStudent(student.id!)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+   -->
+   <div class="container">
+    <h2>{{ isEditMode ? 'Update Student' : 'Create Student' }}</h2>
+  
+    <form [formGroup]="studentForm" (ngSubmit)="submitForm()">
+      <div>
+        <label>Name:</label>
+        <input formControlName="name">
+        <div *ngIf="studentForm.get('name')?.invalid && studentForm.get('name')?.touched" style="color:red;">
+          Name is required.
+        </div>
+      </div>
+  
+      <div>
+        <label>Email:</label>
+        <input formControlName="email">
+        <div *ngIf="studentForm.get('email')?.invalid && studentForm.get('email')?.touched" style="color:red;">
+          Enter a valid email.
+        </div>
+      </div>
+  
+      <div>
+        <label>Course:</label>
+        <input formControlName="course">
+        <div *ngIf="studentForm.get('course')?.invalid && studentForm.get('course')?.touched" style="color:red;">
+          Course is required.
+        </div>
+      </div>
+  
+      <div>
+        <label>Date of Birth:</label>
+        <input type="date" formControlName="dateOfBirth">
+        <div *ngIf="studentForm.get('dateOfBirth')?.invalid && studentForm.get('dateOfBirth')?.touched" style="color:red;">
+          Date of Birth is required.
+        </div>
+      </div>
+  
+      <button type="submit">{{ isEditMode ? 'Update' : 'Create' }}</button>
+      <button type="button" (click)="cancelEdit()" *ngIf="isEditMode">Cancel</button>
+    </form>
+  
+    <hr>
+  
+    <h2>All Students</h2>
+    <table border="1" width="100%">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Course</th>
+          <th>Date Of Birth</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let student of students">
+          <td>{{student.id}}</td>
+          <td>{{student.name}}</td>
+          <td>{{student.email}}</td>
+          <td>{{student.course}}</td>
+          <td>{{student.dateOfBirth}}</td>
+          <td>
+            <button [routerLink]="['/students', student.id]">View</button>
+
+            <button (click)="editStudent(student)">Edit</button>
+            <button (click)="deleteStudent(student.id!)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
